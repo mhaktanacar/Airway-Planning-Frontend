@@ -19,10 +19,10 @@ function Flight(props) {
                         variant="body1"
                     >
                         Flight Number : {props.flightNumber} <br />
-                        Airline Code : {props.airline.airlineCode}<br />
+                        Airline Code : {props.airlineCode}<br />
                         Flight Date : {props.flightDate.split('T').join(' ').split('.').toString().substring(0,16)}<br />
-                        Source Airport : {props.sourceAirport.airportCode}<br />
-                        Destination Airport : {props.destAirport.airportCode}<br />
+                        Source Airport : {props.sourceAirport}<br />
+                        Destination Airport : {props.destAirport}<br />
 
                         ---
                     </Typography>

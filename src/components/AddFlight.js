@@ -60,7 +60,7 @@ function AddFlight(props) {
             },
             method: "POST",
             body: JSON.stringify({
-                flightNumber: text, flightDate: flightDate, airline: airline,
+                flightNumber: text, flightDate: flightDate, airlineCode: airline,
                 sourceAirport: sourceAirport, destAirport: destAirport
             }),
         })
@@ -74,27 +74,26 @@ function AddFlight(props) {
     }
 
     const handleAirlineChange = (event) => {
-        console.log(airlines.filter((airl) => airl.id == event.target.value)[0]);
-        setAirline(airlines.filter((airl) => airl.id == event.target.value)[0]);
+        setAirline(event.target.value);
     };
 
     const handleSourceAirportChange = (event) => {
-        if (destAirport != '' && destAirport.id == event.target.value) {
+        if (destAirport != '' && destAirport == event.target.value) {
             alert('You can not choose the same airport for source and destination');
             setSourceAirport('');
         }
         else {
-            setSourceAirport(airports.filter((airl) => airl.id == event.target.value)[0]);
+            setSourceAirport(event.target.value);
         }
     };
 
     const handleDestAirportChange = (event) => {
-        if (sourceAirport != '' && sourceAirport.id == event.target.value) {
+        if (sourceAirport != '' && sourceAirport == event.target.value) {
             alert('You can not choose the same airport for source and destination');
             setDestAirport('');
         }
         else {
-            setDestAirport(airports.filter((airl) => airl.id == event.target.value)[0]);
+            setDestAirport(event.target.value);
         }
     };
 
@@ -140,11 +139,11 @@ function AddFlight(props) {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={airline.airlineCode}
-                                    label="Age"
+                                    label="Airline"
                                     onChange={handleAirlineChange}
                                 >
-                                    {airlines.map(({ id, airlineCode }) => (
-                                        <MenuItem value={id}>{airlineCode}</MenuItem>
+                                    {airlines.map(({ airlineCode }) => (
+                                        <MenuItem value={airlineCode}>{airlineCode}</MenuItem>
                                     ))}
                                 </Select>
                             </FormControl>
@@ -154,11 +153,11 @@ function AddFlight(props) {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={sourceAirport.airportCode}
-                                    label="Age"
+                                    label="Source Airport"
                                     onChange={handleSourceAirportChange}
                                 >
-                                    {airports.map(({ id, airportCode }) => (
-                                        <MenuItem value={id}>{airportCode}</MenuItem>
+                                    {airports.map(({ airportCode }) => (
+                                        <MenuItem value={airportCode}>{airportCode}</MenuItem>
                                     ))}
                                 </Select>
                             </FormControl>
@@ -168,11 +167,11 @@ function AddFlight(props) {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={destAirport.airportCode}
-                                    label="Age"
+                                    label="Dest Airport"
                                     onChange={handleDestAirportChange}
                                 >
-                                    {airports.map(({ id, airportCode }) => (
-                                        <MenuItem value={id}>{airportCode}</MenuItem>
+                                    {airports.map(({ airportCode }) => (
+                                        <MenuItem value={airportCode}>{airportCode}</MenuItem>
                                     ))}
                                 </Select>
                             </FormControl>

@@ -51,8 +51,8 @@ function Airline(props) {
                     label="Age"
                     onChange={handleChange}
                 >
-                    {airlines.map(({ id, airlineCode }) => (
-                        <MenuItem value={id}>{airlineCode}</MenuItem>
+                    {airlines.map(({ airlineCode }) => (
+                        <MenuItem value={airlineCode}>{airlineCode}</MenuItem>
                     ))}
 
                 </Select>
@@ -63,12 +63,12 @@ function Airline(props) {
                 <Paper>
                     <Box display="flex" flexDirection="column" alignItems="stretch">
                         <div >
-                            {flights.map(({ id, flightNumber, flightDate, airline, sourceAirport, destAirport }) => (
+                            {flights.map(({ id, flightNumber, flightDate, airlineCode, sourceAirport, destAirport }) => (
                                 <Flight
                                     id={id}
                                     flightNumber={flightNumber}
                                     flightDate={flightDate}
-                                    airline={airline}
+                                    airlineCode={airlineCode}
                                     sourceAirport={sourceAirport}
                                     destAirport={destAirport}
                                 >

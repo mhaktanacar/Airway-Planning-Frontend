@@ -15,12 +15,12 @@ function TodaysFlights(props) {
                 <Paper>
                     <Box display="flex" flexDirection="column" alignItems="stretch">
                         <div >
-                            {flights.map(({ id, flightNumber, flightDate, airline, sourceAirport, destAirport }) => (
+                            {flights.map(({ id, flightNumber, flightDate, airlineCode, sourceAirport, destAirport }) => (
                                 <Flight
                                     id={id}
                                     flightNumber={flightNumber}
                                     flightDate={flightDate}
-                                    airline={airline}
+                                    airlineCode={airlineCode}
                                     sourceAirport={sourceAirport}
                                     destAirport={destAirport}
                                 >
